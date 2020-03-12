@@ -7,7 +7,7 @@ class XHttpClient
 public:
 	bool Start(XTcp client);
 	XTcp client;
-	void Main();
+	//void Main();
 	XHttpResonse res;
 };
 

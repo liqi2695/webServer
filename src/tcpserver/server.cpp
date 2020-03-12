@@ -10,7 +10,7 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 	signal(SIGPIPE,SIG_IGN);
-	unsigned short port = 8081;
+	unsigned short port = 8077;
 	if (argc > 1)
 	{
 		port = atoi(argv[1]);

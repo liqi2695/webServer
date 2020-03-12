@@ -6,7 +6,7 @@
 
 
 using namespace std;
-//¼ÆËãÎÄ¼ş´óĞ¡
+//ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ğ¡
 bool XHttpResonse::SetRequest(std::string request)
 {
 	string src = request;
@@ -20,7 +20,7 @@ bool XHttpResonse::SetRequest(std::string request)
 		cout << pattern << " failed" << endl;
 		return false;
 	}
-	//È¡µ½µÄÂ·¾¶½á¹û
+	//È¡ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½
 	string type = mas[1];//GET
 	string path = "/";
 	path += mas[2];//index.html
@@ -58,9 +58,9 @@ bool XHttpResonse::SetRequest(std::string request)
 		cmd += " > ";
 		filepath += ".html";
 		cmd += filepath;
-		//ÉÏÃæÓï¾äµÄÒâË¼¾ÍÊÇphp-cgi www/index.php  > www/index.php.html
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ï¿½ï¿½ï¿½ï¿½php-cgi www/index.php  > www/index.php.html
 		printf("%s\n", cmd.c_str());
-		system(cmd.c_str());//CÓïÑÔ×Ô´øº¯Êı£¬¿ÉÒÔÖ±½ÓÖ´ĞĞÖ¸Áî
+		system(cmd.c_str());//Cï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½Ö´ï¿½ï¿½Ö¸ï¿½ï¿½
 	}
 
 	fp = fopen(filepath.c_str(), "rb");
@@ -70,15 +70,15 @@ bool XHttpResonse::SetRequest(std::string request)
 		return false;
 	}
 
-	//»ñÈ¡ÎÄ¼ş´óĞ¡
+	//ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½Ğ¡
 	fseek(fp, 0, SEEK_END);
-	filesize = ftell(fp);//»á´æÔÚintµÄ´óĞ¡ÎÊÌâ
+	filesize = ftell(fp);//ï¿½ï¿½ï¿½ï¿½ï¿½intï¿½Ä´ï¿½Ğ¡ï¿½ï¿½ï¿½ï¿½
 	fseek(fp, 0, 0);
 	cout << "file size is:" << filesize << endl;
 
-	//´¦ÀíÍ·
+	//ï¿½ï¿½ï¿½ï¿½Í·
 	if (filetype == "php")
-		//Ö»ÓĞÊÇphpÎÄ¼ş²Å½øĞĞÍ·´¦Àí£¬²»Ó°ÏìÆäËû¾²Ì¬ÎÄ¼şµÄ·ÃÎÊ
+		//Ö»ï¿½ï¿½ï¿½ï¿½phpï¿½Ä¼ï¿½ï¿½Å½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¬ï¿½Ä¼ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
 	{
 		char c = 0;
 		//\r\n\r\n
@@ -89,24 +89,24 @@ bool XHttpResonse::SetRequest(std::string request)
 			if (c == '\r')
 			{
 				fseek(fp, 3, SEEK_CUR);
-				//Åö¼û/rÏòºóÒÆ¶¯ÈıÎ»£¬È»ºó¾Íµ½ÕıÎÄÁË
+				//ï¿½ï¿½ï¿½ï¿½/rï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½Î»ï¿½ï¿½È»ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				headsize += 3;
 				break;
 			}
 		}
-		filesize = filesize - headsize;//½«filesizeµÄÖµ½øĞĞ¸Ä±ä
+		filesize = filesize - headsize;//ï¿½ï¿½filesizeï¿½ï¿½Öµï¿½ï¿½ï¿½Ğ¸Ä±ï¿½
 	}
 
 	return true;
 }
-//»ØÓ¦ÇëÇó£¬ÉèÖÃÏûÏ¢Í·£¬¡£»ñÈ¡Í·ĞÅÏ¢
+//è·å–è¯·æ±‚æŠ•
 std::string XHttpResonse::GetHead()
 {
-	//»ØÓ¦http£¬GETÇëÇó
-    //ÏûÏ¢Í·
+	//å¤„ç†httpçš„getè¯·æ±‚
+    //ï¿½ï¿½Ï¢Í·
 	string rmsg = "";
-	rmsg = "HTTP/1.1 200 OK\r\n"; //Ğ­Òé
-	rmsg += "Server:XHttp\r\n";//ÓÃ\r\rn½áÊø
+	rmsg = "HTTP/1.1 200 OK\r\n"; //Ğ­ï¿½ï¿½
+	rmsg += "Server:XHttp\r\n";//ï¿½ï¿½\r\rnï¿½ï¿½ï¿½ï¿½
 	rmsg += "Content-Type: text/html\r\n";
 	rmsg += "Content-Length: ";
 	char bsize[128] = { 0 };
@@ -117,17 +117,17 @@ std::string XHttpResonse::GetHead()
 
 	
 	rmsg += bsize;
-	//rmsg += "10\r\n";//¿ØÖÆ·¢ËÍµÄ´óĞ¡ 
+	//rmsg += "10\r\n";//ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ÍµÄ´ï¿½Ğ¡ 
 	rmsg += "\r\n\r\n";
-	//ÏûÏ¢ÄÚÈİ
+	//ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 	//rmsg += "0123456789";
-	//·¢ËÍÏûÏ¢Í·
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢Í·
 	return rmsg;
 }
 
-//ÕıÎÄ
+//ï¿½ï¿½ï¿½ï¿½
 int XHttpResonse::Read(char* buf, int bufsize)
 {
-	//·¢ËÍÕıÎÄ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	return  fread(buf, 1, bufsize, fp);
 }

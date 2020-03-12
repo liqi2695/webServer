@@ -97,7 +97,7 @@ int XTcp::Send(const char* buf, int size)
 	while (sendedsize != size)
 	{
 		int len = send(sock, buf + sendedsize, size - sendedsize, 0);
-		if (len <= 0) break;
+		if (len == -1) break;
 		sendedsize += len;
 	}
 	return sendedsize;

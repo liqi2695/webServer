@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
 {
 	XTcp server;
 
-	unsigned short port = 8080;
+	unsigned short port = 8088;
 	if (argc > 1)
 	{
 		port = atoi(argv[1]);
